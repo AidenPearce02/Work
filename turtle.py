@@ -12,6 +12,9 @@ class Figure(object):
    def draw(self):
        pass
 
+   def drawf(self):
+       pass
+
    def input_date(self):
        pass
 
@@ -27,6 +30,14 @@ class Square(Figure):
             turtle.forward(self.a)
             turtle.left(90)
 
+    def drawf(self):
+        turtle.penup()
+        turtle.setposition(self.x,self.y)
+        turtle.pendown()
+        for i in range(4):
+            turtle.forward(self.a)
+            turtle.left(90)
+
     def input_date(self):
         self.a = float(input("Input a: "))
 
@@ -36,8 +47,17 @@ class Rectangle(Figure):
         super(Rectangle, self).__init__()
 
     def draw(self):
-        self.x = turtle.xcor()
-        self.y = turtle.ycor()
+        self.x=turtle.xcor()
+        self.y=turtle.ycor()
+        for i in range(2):
+            turtle.forward(self.a)
+            turtle.left(90)
+            turtle.forward(self.b)
+            turtle.left(90)
+
+    def drawf(self):
+        turtle.setx(self.x)
+        turtle.sety(self.y)
         for i in range(2):
             turtle.forward(self.a)
             turtle.left(90)
@@ -54,8 +74,13 @@ class Circle(Figure):
         super(Circle, self).__init__()
 
     def draw(self):
-        self.x = turtle.xcor()
-        self.y = turtle.ycor()
+        self.x=turtle.xcor()
+        self.y=turtle.ycor()
+        turtle.circle(self.a)
+
+    def drawf(self):
+        turtle.setx(self.x)
+        turtle.sety(self.y)
         turtle.circle(self.a)
 
     def input_date(self):
@@ -67,8 +92,15 @@ class TriangleE(Figure):
         super(TriangleE, self).__init__()
 
     def draw(self):
-        self.x = turtle.xcor()
-        self.y = turtle.ycor()
+        self.x=turtle.xcor()
+        self.y=turtle.ycor()
+        for i in range(3):
+            turtle.forward(self.a)
+            turtle.left(120)
+
+    def drawf(self):
+        turtle.setx(self.x)
+        turtle.sety(self.y)
         for i in range(3):
             turtle.forward(self.a)
             turtle.left(120)
@@ -89,7 +121,7 @@ class Storage(object):
             figuref.a = float(f[1])
             figuref.x = float(f[3])
             figuref.y = float(f[4])
-            figuref.draw()
+            figuref.drawf()
 
         elif "Square" in str(figure):
             figuref = Square()
@@ -97,7 +129,8 @@ class Storage(object):
             figuref.a = float(f[1])
             figuref.x = float(f[3])
             figuref.y = float(f[4])
-            figuref.draw()
+            print(str(figuref.a)+" "+str(figuref.x)+" "+str(figuref.y ))
+            figuref.drawf()
 
         elif "Rectangle" in str(figure):
             figuref = Rectangle()
@@ -106,7 +139,7 @@ class Storage(object):
             figuref.b = float(f[2])
             figuref.x = float(f[3])
             figuref.y = float(f[4])
-            figuref.draw()
+            figuref.drawf()
 
         elif "TriangleE" in str(figure):
             figuref = TriangleE()
@@ -114,7 +147,7 @@ class Storage(object):
             figuref.a = float(f[1])
             figuref.x = float(f[3])
             figuref.y = float(f[4])
-            figuref.draw()
+            figuref.drawf()
 
     def addf(self, ids, figure):
         if "Circle" in str(figure):
@@ -158,7 +191,7 @@ class MyCmd(Cmd):
             figure = Square()
             figure.input_date()
             figure.draw()
-            storage.addf(random.randint(10, 100),figure)
+            storage.addf(random.randint(10, 99), figure)
         elif chosenF == 2:
             figure = Rectangle()
             figure.input_date()
@@ -182,6 +215,7 @@ class MyCmd(Cmd):
         f = open(name, 'w')
         for index in storage.storage:
             f.write(str(index)+" "+storage.storage[index]+'\n')
+        turtle.bye()
         f.close()
 
     def do_open(*args,**kwargs):
