@@ -1,0 +1,52 @@
+*{
+margin:0;
+padding:0;
+}
+html {
+    height: 100%;
+}
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+.building{
+    text-align:center;
+    margin:10px;
+    width:150px;
+    height:150px;
+    border: 0.1px solid black;
+}
+#resources{
+    position: relative;
+    left: calc(100% - 170px);
+}
+#wood{
+    position: fixed; top: 25%; left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background:brown;
+}
+#gold{
+    position: fixed; top: 70%; left: 35%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background:gold;
+}
+#rock{
+    position: fixed; top: 70%; left: 65%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background:grey;
+}
+#castle{
+    color:white;
+    position: fixed; top: 50%; left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background:black;
+}
